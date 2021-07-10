@@ -1,0 +1,23 @@
+
+@font-face { font-family:Josefin-Sans; src:url(fonts/JosefinSans-Bold.ttf); }
+@font-face { font-family:Josefin-Regular; src:url(fonts/JosefinSans-Regular.ttf); }
+body { margin:0; }
+html { overflow-x:hidden; }
+*, *::before, *::after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/* Popular tour packages css start */
+.Abc_poptour_ { padding:70px 0;  }
+.slick-prev, .slick-next { z-index:1000; background:rgba(0, 0, 0, 0.5); }
+.slick-prev img, .slick-next img { height:18px }
+.slick-prev { left:-48px; transition:all 0.5s; border-radius:0 6px 6px 0; }
+.slick-next { right:-48px; transition:all 0.5s; border-radius:6px 0 0 6px; }
+.Abc_poptour_imgsctn:hover .slick-prev { background:rgba(0, 0, 0, 0.5); left:-10px; width:44px; height:88px; transition:all 0.5s; }
+.Abc_poptour_imgsctn:hover .slick-next { background:rgba(0, 0, 0, 0.5); right:-10px; width:44px; height:88px; transition:all 0.5s; }
+.Abc_poptour_imgsctn .slick-prev:hover { width:88px; transition:all 0.5s; }
+.Abc_poptour_imgsctn .slick-next:hover { width:88px; transition:all 0.5s; }
+.Abc_poptour_Packag_ .wow img { position:relative; top:0; transition:all 0.5s; }
+.Abc_poptour_Packag_ .wow img:hover { top:-15px; transition:all 0.5s; }
+.Abc_poptour_Packag_ .slick-track { padding:20px 0px }
+.slick-prev:before, .slick-next:before { content:''; display:none }
