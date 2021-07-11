@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <!-- <form>
+
+    </form> -->
+
+    <div>
+        <h1> User Data Tagging System</h1> <br>
+        Name <input type="text" name="firstName" id="firstName"/> 
+        <label id="lblfirstName"></label>
+        <br>
+        Age <input type="number" name="lastName" id="lastName"/>
+        <label id="lbllastName"></label><br>
+        ContactNumber <input type="text" name="contact" id="contact"/>
+        <label id="lblcontact"></label><br>
+        email <input type="email" name="email" id="email"/>
+        <label id="lblemail"></label><br>
+        <input type="button" value="Tag Data" id="tagData">
+        <input type="button" value="Show Tagged Tata In Grid" id="transformGrid">
+    </div>
+
+    <div id="tableContainer"></div>
+
+    <!--
+        Use Case 1 
+            Creating an HTML Structure that could get some data from the user 
+            such as Name Age ContactNumber email
+            when the user will click on save button all data sould be appned to some object
+
+            later that object will be rendered by the HTML Table
+
+            Save Button this entered data should be shown inside a table 
+            row and columns format 
+
+    -->
+
+
+    <script>
+           var tagDataBtn = document.getElementById('tagData');
+            var firstName = document.getElementById('firstName');
+            var lastName = document.getElementById('lastName');
+            var contact = document.getElementById('contact');
+            var email = document.getElementById('email');
+            /// error labels 
+            var errlblFName = document.getElementById('lblfirstName');
+            var errlblLName = document.getElementById('lbllastName');
+            var errlblEmail = document.getElementById('lblemail');
+            var errlblContact = document.getElementById('lblcontact');
+
+            lastName.onchange= function(e){
+                errlblLName.innerText="";
+            }
+            contact.onchange= function(e){
+                errlblContact.innerText="";
+            }
+            email.onchange= function(e){
+                errlblEmail.innerText="";
+            }
+            firstName.onchange= function(e){
+                errlblFName.innerText="";
+            }
+
+
+            var users= []
+
+        tagDataBtn.onclick= function(e){
+            // validation here 
+            if(firstName.value==''){
+                errlblFName.style.color="red"
+                errlblFName.innerText="This field is required";
+            }else
+            if(lastName.value==''){
+                errlblLName.style.color="red"
+                errlblLName.innerText="This field is required";
+            }else
+            if(contact.value==''){
+                errlblContact.style.color="red"
+                errlblContact.innerText="This field is required";
+            }else
+            if(email.value==''){
+                errlblEmail.style.color="red"
+                errlblEmail.innerText="This field is required";
+            }else {
+                alert("Everything is good save it ")
+
+                var personData = {
+                    "firstName":firstName.value,
+                    "lastName":lastName.value,
+                    "contact":contact.value,
+                    "email":email.value
+                };
+                users.push(personData);
+            }
+
+
+
+            
+        }
+
+    </script>
+
+
+<script>
+    var transformGrid= document.getElementById("transformGrid")
+    //tableContainer
+    transformGrid.onclick= function(e){
+
+        document.getElementById("tableContainer").innerHTML="";
+        var taggedTable = document.createElement('table');
+
+        
+
+        taggedTable.style.border= "2px solid black";
+        for(let counter = 0 ; counter<users.length;counter++){
+            var tr= document.createElement('tr')
+            var tdfName=document.createElement('td')
+            var tdlName=document.createElement('td')
+            var tdEmail=document.createElement('td')
+            var tdContact=document.createElement('td')
+            tdfName.append(users[counter].firstName);
+            tdlName.append(  users[counter].lastName);
+            tdEmail.append( users[counter].contact);
+            tdContact.append(  users[counter].email);
+
+            tr.appendChild(tdfName)
+            tr.appendChild(tdlName)
+            tr.appendChild(tdEmail)
+            tr.appendChild(tdContact)
+            taggedTable.appendChild(tr);
+
+            document.getElementById("tableContainer").appendChild(taggedTable);
+        }
+        
+    }
+
+ </script>
+</body>
+</html>
